@@ -1,0 +1,211 @@
+<html>
+<head>
+<title>Weather App</title>
+ <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+</head>
+<body onload="init()" background="https://wallpaperscraft.com/image/beach_tropics_sea_sand_summer_84726_1920x1080.jpg">
+<style>
+.margin{
+padding:5px;
+border-style:transparent;
+border-width:1px;
+border-color:gray;
+margin-top:10px;
+margin-bottom:10px;
+margin-left:auto;
+margin-right:auto;
+text-align:center;
+height:auto;
+width:auto;
+margin: 0 auto;
+font-size:35px;
+  color: black;
+}
+
+.curved{
+border-radius:5px;
+}
+</style>
+<div class="container-fluid">
+
+<div class="row text-center" style="margin-top:0px;">
+<div class="col-xs-12">
+<h1>Weather App</h1>
+</div>
+</div>
+
+<div class="row text-center" style="margin-top:10px;">
+<div class="col-xs-12">
+<button class="btn curved" id="useCurrent" ><i class="fa fa-map-marker" aria-hidden="true"></i> Current Location</button>
+<button class="btn curved" id="useManual"  onclick="showHide()"><i class="fa fa-globe" aria-hidden="true"></i> Search a Location</button>
+
+</div>
+</div>
+
+<div id="searchManual" class="row text-center" style="margin-top:10px;">
+<div class="col-xs-12">
+<input type="text" class="curved" id="searchBox" style="color:black; width:250px;" placeholder='Enter your city here...E.g. Meerut, India'>
+<button class="btn curved" id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+</div>
+</div>
+
+
+<div class="row text-center" style="margin-top:10px;">
+<div class="col-xs-12">
+<p id="position"></p>
+</div>
+</div>
+
+<div class="row text-center message margin curved"  style="margin-top:10px;">
+<div class="col-xs-12">
+<div id="displayCity">
+</div>
+
+<div id="displayCountry">
+</div>
+
+<div id="displayTemperature">
+</div>
+
+<div id="displayDescription">
+</div>
+
+<div id="displayHumidity">
+</div>
+
+<div id="displayWindSpeed">
+</div>
+
+
+</div>
+</div>
+
+
+<div class="row text-center" style="margin-top:10px;">
+<div class="col-xs-12">
+<button class="btn curved" id="clearBtn" onclick="clean()"><i class="fa fa-times" aria-hidden="true"></i> Clear Search</button>
+<button class="btn curved" id="showWeather"><i class="fa fa-search" aria-hidden="true"></i> Show Weather</button>
+</div>
+</div>
+
+  <div class="row text-center" style="margin-top:10px;">
+<div class="col-xs-12">
+<p><i class="fa fa-copyright" aria-hidden="true"></i>KaushikCodeArts : App by Piyush Kaushik</p>
+</div>
+</div>
+  <div class="row text-center">
+                <div class="col-xs-12">
+				<a id="fb" class="btn btn-default text-center" style="background-color:transparent;border-color:transparent;" href="https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/Kaushik02/full/Myvgqd/" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="color:blue;font-size:30px;font-weight:bold;"></i></a>
+                <a id="whatsapp" class="btn btn-default text-center" style="background-color:transparent;border-color:transparent;" href="whatsapp://send?text=https://codepen.io/Kaushik02/full/Myvgqd/"><i class="fa fa-whatsapp" aria-hidden="true" style="color:Green;font-size:30px;font-weight:bold;"></i></a>
+        		<a id="tweet" class="btn btn-default text-center" style="background-color:transparent;border-color:transparent;" href="https://twitter.com/home?status=https://codepen.io/Kaushik02/full/Myvgqd/" target="_blank"><i class="fa fa-twitter" aria-hidden="true" style="color:skyblue;font-size:30px;font-weight:bold;"></i></a>
+                </div>
+        </div>
+</div>
+<script type="text/javascript">
+var longi;
+var lati;
+var x = document.getElementById("position");
+
+ $("document").ready(function(){
+   $("#useCurrent").on("click", function(){
+   
+   var geoAPI="http://ip-api.com/json";
+   document.getElementById("clearBtn").disabled= false;
+document.getElementById("showWeather").disabled= false;
+cleanSlate();
+   $.getJSON(geoAPI, function(data){
+    var longitude = data.lon;
+	longi = longitude.toFixed(2);
+	var latitude = data.lat;
+	lati = latitude.toFixed(2);
+	x.innerHTML = "Coordinates are :: "+"Latitude: " + lati +
+    ", Longitude: " + longi;
+   
+   });
+   
+   });
+   
+   $("#searchBtn").on("click", function(){
+   cleanSlate();
+   document.getElementById("clearBtn").disabled= false;
+   document.getElementById("showWeather").disabled= false;
+   var searchedLoc = document.getElementById("searchBox").value;
+   console.log(searchedLoc);
+    var api="http://api.openweathermap.org/data/2.5/weather?q="+searchedLoc+"&appid=664c24ca95a13690eb80fb1c7ace2477";
+   $.getJSON(api, function(data){
+     longi=data.coord.lon;
+     console.log(longi);
+     lati=data.coord.lat;
+     console.log(lati);
+	 x.innerHTML = "Coordinates are :: "+"Latitude: " + lati +
+    ", Longitude: " + longi;
+     });
+   });
+   
+   $("#showWeather").on("click", function(){
+   var apiByLatLon = "http://api.openweathermap.org/data/2.5/weather?lat="+lati+"&lon="+longi+"&appid=664c24ca95a13690eb80fb1c7ace2477";
+    $.getJSON(apiByLatLon, function(data){
+	document.getElementById("displayCity").innerHTML = "City : "+data.name;
+	document.getElementById("displayCountry").innerHTML = "Country : "+data.sys.country;
+	document.getElementById("displayTemperature").innerHTML = "Temp : "+((data.main.temp*(9/5))-459.67).toFixed(2)+" F / "+(data.main.temp-(273.15)).toFixed(2)+" C";
+	document.getElementById("displayDescription").innerHTML = "Forecast : "+data.weather[0].description;
+	document.getElementById("displayHumidity").innerHTML = "Humidity : "+data.main.humidity+" %";
+	document.getElementById("displayWindSpeed").innerHTML = "Wind : "+data.wind.speed+" mph / "+((data.wind.speed*1.6)).toFixed(2)+" kph";
+	});
+   });
+ }); 
+  
+function init(){
+document.getElementById("searchManual").style.visibility="hidden";
+document.getElementById("clearBtn").disabled= true;
+document.getElementById("showWeather").disabled= true;
+}
+
+
+
+function showHide(){
+if(document.getElementById("useManual").innerHTML==='<i class="fa fa-globe" aria-hidden="true"></i> Search a Location'){
+document.getElementById("useManual").innerHTML='<i class="fa fa-globe" aria-hidden="true"></i> Close Manual Search';
+
+document.getElementById("searchManual").style.visibility="visible";
+}
+else if(document.getElementById("useManual").innerHTML==='<i class="fa fa-globe" aria-hidden="true"></i> Close Manual Search'){
+document.getElementById("useManual").innerHTML='<i class="fa fa-globe" aria-hidden="true"></i> Search a Location';
+document.getElementById("searchManual").style.visibility="hidden";
+}
+
+
+}
+
+function clean(){
+document.getElementById("clearBtn").disabled= true;
+document.getElementById("showWeather").disabled= true;
+document.getElementById("searchBox").value="";
+document.getElementById("position").innerHTML="";
+cleanSlate();
+lati='';
+longi='';
+}
+
+
+function cleanSlate(){
+document.getElementById("displayCity").innerHTML="";
+document.getElementById("displayCountry").innerHTML="";
+document.getElementById("displayTemperature").innerHTML="";
+document.getElementById("displayDescription").innerHTML="";
+document.getElementById("displayHumidity").innerHTML="";
+document.getElementById("displayWindSpeed").innerHTML="";
+
+}
+</script>
+</body>
+
+</html>
