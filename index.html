@@ -118,7 +118,7 @@ var x = document.getElementById("position");
  $("document").ready(function(){
    $("#useCurrent").on("click", function(){
    
-   var geoAPI="https://ip-api.com/json";
+   var geoAPI="https://crossorigin.me/http://ip-api.com/json";
    document.getElementById("clearBtn").disabled= false;
 document.getElementById("showWeather").disabled= false;
 cleanSlate();
@@ -140,7 +140,7 @@ cleanSlate();
    document.getElementById("showWeather").disabled= false;
    var searchedLoc = document.getElementById("searchBox").value;
    console.log(searchedLoc);
-    var api="http://api.openweathermap.org/data/2.5/weather?q="+searchedLoc+"&appid=664c24ca95a13690eb80fb1c7ace2477";
+    var api="https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q="+searchedLoc+"&appid=664c24ca95a13690eb80fb1c7ace2477";
    $.getJSON(api, function(data){
      longi=data.coord.lon;
      console.log(longi);
