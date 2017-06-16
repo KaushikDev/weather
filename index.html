@@ -11,9 +11,10 @@
 	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 </head>
-<body onload="init()" background="https://wallpaperscraft.com/image/beach_tropics_sea_sand_summer_84726_1920x1080.jpg">
+<body onload="init()" style="background-color:black;">
 <style>
-.margin{
+
+.message{
 padding:5px;
 border-style:transparent;
 border-width:1px;
@@ -22,21 +23,23 @@ margin-top:10px;
 margin-bottom:10px;
 margin-left:auto;
 margin-right:auto;
-text-align:center;
 height:auto;
 width:auto;
 margin: 0 auto;
-font-size:35px;
-  color: black;
+font-size:auto;
+font-style:bold;
+color: White;
 }
+
 
 .curved{
 border-radius:5px;
+color:black;
 }
 </style>
 <div class="container-fluid">
 
-<div class="row text-center" style="margin-top:0px;">
+<div class="row text-center" style="margin-top:0px;color:white;">
 <div class="col-xs-12">
 <h1>Weather App</h1>
 </div>
@@ -58,15 +61,22 @@ border-radius:5px;
 </div>
 </div>
 
-
-<div class="row text-center" style="margin-top:10px;">
+<div class="row text-center" style="margin-top:10px;color:white;">
 <div class="col-xs-12">
 <p id="position"></p>
 </div>
 </div>
 
-<div class="row text-center message margin curved"  style="margin-top:10px;">
+<div class="row message"  style="margin-top:10px;">
 <div class="col-xs-12">
+
+
+<img src="" id="displayIcon" style="width:64px;height:64px;border-radius:32px;" >
+
+
+<div id="displayTime">
+</div>
+
 <div id="displayCity">
 </div>
 
@@ -76,7 +86,10 @@ border-radius:5px;
 <div id="displayTemperature">
 </div>
 
-<div id="displayDescription">
+<div id="displayCurrent">
+</div>
+
+<div id="displayForecast">
 </div>
 
 <div id="displayHumidity">
@@ -85,6 +98,8 @@ border-radius:5px;
 <div id="displayWindSpeed">
 </div>
 
+<div id="displayWindDirection">
+</div>
 
 </div>
 </div>
@@ -93,11 +108,13 @@ border-radius:5px;
 <div class="row text-center" style="margin-top:10px;">
 <div class="col-xs-12">
 <button class="btn curved" id="clearBtn" onclick="clean()"><i class="fa fa-times" aria-hidden="true"></i> Clear Search</button>
+<!--
 <button class="btn curved" id="showWeather"><i class="fa fa-search" aria-hidden="true"></i> Show Weather</button>
+-->
 </div>
 </div>
 
-  <div class="row text-center" style="margin-top:10px;">
+  <div class="row text-center" style="margin-top:10px;color:white;">
 <div class="col-xs-12">
 <p><i class="fa fa-copyright" aria-hidden="true"></i>KaushikCodeArts : App by Piyush Kaushik</p>
 </div>
@@ -114,97 +131,125 @@ border-radius:5px;
 var longi;
 var lati;
 var x = document.getElementById("position");
+var searchedLoc;
+var longitude;
+var latitude;
 
  $("document").ready(function(){
+ 
+ //+++++++++++'Weather by coordinates' section begins here. Workflow : Search for coordinates using a suitable api, convert coordinates into location using reverse geocode api, find weather of the required location using the weather api+++++++++    
    $("#useCurrent").on("click", function(){
+	x.innerHTML="";
+	var geoAPI="http://ip-api.com/json";
+	document.getElementById("clearBtn").disabled= false;
+	cleanSlate();
+		try{
+			$.getJSON(geoAPI, function(data){
+			longitude = data.lon;
+			longi = longitude.toFixed(6);
+			latitude = data.lat;
+			lati = latitude.toFixed(6);
+			x.innerHTML = "Location identified as : "+lati+" , "+longi;
+			var geoCodeAPI = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lati+","+longi+"&key=AIzaSyCw2PTn1URdm2BPGU5daVOHDpav8KcqOOs" ;
+					$.getJSON(geoCodeAPI, function(geoData){
+						var placeName = geoData.results[0].address_components[4].long_name;
+						var apiByLatLong = "https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+placeName;
+						
+								$.getJSON(apiByLatLong, function(data){
+									document.getElementById("displayIcon").src = "http:"+data.current.condition.icon;
+									document.getElementById("displayTime").innerHTML = 'Current Time   : '+data.location.localtime;
+									document.getElementById("displayCity").innerHTML = 'City           : '+data.location.name;
+									document.getElementById("displayCountry").innerHTML = 'Country        : '+data.location.country;
+									document.getElementById("displayTemperature").innerHTML = 'Temperature    : '+data.current.temp_c+'C / '+	data.current.temp_f+'F';
+									document.getElementById("displayCurrent").innerHTML = 'Current        : '+data.current.condition.text;
+									document.getElementById("displayForecast").innerHTML = 'Forecast       : '+data.forecast.forecastday[0].day.condition.text;
+									document.getElementById("displayHumidity").innerHTML = 'Humidity       : '+data.current.humidity+"%";
+									document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed     : '+data.current.wind_mph+" mph / "+data.current.wind_kph+" kph" ;
+									document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
+								});
+					});
    
-   var geoAPI="https://crossorigin.me/http://ip-api.com/json";
-   document.getElementById("clearBtn").disabled= false;
-document.getElementById("showWeather").disabled= false;
-cleanSlate();
-   $.getJSON(geoAPI, function(data){
-    var longitude = data.lon;
-	longi = longitude.toFixed(2);
-	var latitude = data.lat;
-	lati = latitude.toFixed(2);
-	x.innerHTML = "Coordinates are :: "+"Latitude: " + lati +
-    ", Longitude: " + longi;
+    
+			});
+		}
+		catch(e){
+			x.innerHTML = "Sorry, We cannot fetch your current Location right now. Please use manual search. Thanks.";
+			clean();
+		}
+  
+   
    
    });
-   
-   });
-   
+//+++++++++++'Weather by coordinates' section ends here...
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++'Weather by searched location' section begins here. Workflow : Search for the required location using search box, find weather of the required location using the weather api+++++++++  
    $("#searchBtn").on("click", function(){
-   cleanSlate();
-   document.getElementById("clearBtn").disabled= false;
-   document.getElementById("showWeather").disabled= false;
-   var searchedLoc = document.getElementById("searchBox").value;
-   console.log(searchedLoc);
-    var api="https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q="+searchedLoc+"&appid=664c24ca95a13690eb80fb1c7ace2477";
-   $.getJSON(api, function(data){
-     longi=data.coord.lon;
-     console.log(longi);
-     lati=data.coord.lat;
-     console.log(lati);
-	 x.innerHTML = "Coordinates are :: "+"Latitude: " + lati +
-    ", Longitude: " + longi;
-     });
+		x.innerHTML="";
+		cleanSlate();
+		document.getElementById("clearBtn").disabled= false;
+		//document.getElementById("showWeather").disabled= false;
+		searchedLoc = document.getElementById("searchBox").value;
+		console.log(searchedLoc);
+    
+		var apiByPlaceName="https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+searchedLoc;
+    
+		$.getJSON(apiByPlaceName, function(data){
+			document.getElementById("displayIcon").src = "http:"+data.current.condition.icon;
+			document.getElementById("displayTime").innerHTML = 'Current Time   : '+data.location.localtime;
+			document.getElementById("displayCity").innerHTML = 'City           : '+data.location.name;
+			document.getElementById("displayCountry").innerHTML = 'Country        : '+data.location.country;
+			document.getElementById("displayTemperature").innerHTML = 'Temperature    : '+data.current.temp_c+'C / '+data.current.temp_f+'F';
+			document.getElementById("displayCurrent").innerHTML = 'Current        : '+data.current.condition.text;
+			document.getElementById("displayForecast").innerHTML = 'Forecast       : '+data.forecast.forecastday[0].day.condition.text;
+			document.getElementById("displayHumidity").innerHTML = 'Humidity       : '+data.current.humidity+"%";
+			document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed     : '+data.current.wind_mph+" mph / "+data.current.wind_kph+" kph" ;
+			document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
+		});
+	 	 
    });
    
-   $("#showWeather").on("click", function(){
-   var apiByLatLon = "http://api.openweathermap.org/data/2.5/weather?lat="+lati+"&lon="+longi+"&appid=664c24ca95a13690eb80fb1c7ace2477";
-    $.getJSON(apiByLatLon, function(data){
-	document.getElementById("displayCity").innerHTML = "City : "+data.name;
-	document.getElementById("displayCountry").innerHTML = "Country : "+data.sys.country;
-	document.getElementById("displayTemperature").innerHTML = "Temp : "+((data.main.temp*(9/5))-459.67).toFixed(2)+" F / "+(data.main.temp-(273.15)).toFixed(2)+" C";
-	document.getElementById("displayDescription").innerHTML = "Forecast : "+data.weather[0].description;
-	document.getElementById("displayHumidity").innerHTML = "Humidity : "+data.main.humidity+" %";
-	document.getElementById("displayWindSpeed").innerHTML = "Wind : "+data.wind.speed+" mph / "+((data.wind.speed*1.6)).toFixed(2)+" kph";
-	});
-   });
+  
  }); 
   
 function init(){
 document.getElementById("searchManual").style.visibility="hidden";
 document.getElementById("clearBtn").disabled= true;
-document.getElementById("showWeather").disabled= true;
+
 }
-
-
 
 function showHide(){
 if(document.getElementById("useManual").innerHTML==='<i class="fa fa-globe" aria-hidden="true"></i> Search a Location'){
+clean();
 document.getElementById("useManual").innerHTML='<i class="fa fa-globe" aria-hidden="true"></i> Close Manual Search';
-
 document.getElementById("searchManual").style.visibility="visible";
 }
 else if(document.getElementById("useManual").innerHTML==='<i class="fa fa-globe" aria-hidden="true"></i> Close Manual Search'){
 document.getElementById("useManual").innerHTML='<i class="fa fa-globe" aria-hidden="true"></i> Search a Location';
+clean();
 document.getElementById("searchManual").style.visibility="hidden";
 }
-
-
 }
-
 function clean(){
 document.getElementById("clearBtn").disabled= true;
-document.getElementById("showWeather").disabled= true;
+//document.getElementById("showWeather").disabled= true;
 document.getElementById("searchBox").value="";
 document.getElementById("position").innerHTML="";
 cleanSlate();
 lati='';
 longi='';
 }
-
-
 function cleanSlate(){
+document.getElementById("displayIcon").src="";
+document.getElementById("displayTime").innerHTML ="";
 document.getElementById("displayCity").innerHTML="";
 document.getElementById("displayCountry").innerHTML="";
 document.getElementById("displayTemperature").innerHTML="";
-document.getElementById("displayDescription").innerHTML="";
+document.getElementById("displayCurrent").innerHTML="";
+document.getElementById("displayForecast").innerHTML="";
 document.getElementById("displayHumidity").innerHTML="";
 document.getElementById("displayWindSpeed").innerHTML="";
-
+document.getElementById("displayWindDirection").innerHTML="";
 }
 </script>
 </body>
