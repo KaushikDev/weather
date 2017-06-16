@@ -140,10 +140,10 @@ var latitude;
  //+++++++++++'Weather by coordinates' section begins here. Workflow : Search for coordinates using a suitable api, convert coordinates into location using reverse geocode api, find weather of the required location using the weather api+++++++++    
    $("#useCurrent").on("click", function(){
 	x.innerHTML="";
-	var geoAPI="https://crossorigin.me/http://ip-api.com/json";
+	var geoAPI="http://ip-api.com/json";
 	document.getElementById("clearBtn").disabled= false;
 	cleanSlate();
-		try{
+		
 			$.getJSON(geoAPI, function(data){
 			longitude = data.lon;
 			longi = longitude.toFixed(6);
@@ -170,12 +170,8 @@ var latitude;
 					});
    
     
-			});
-		}
-		catch(e){
-			x.innerHTML = "Sorry, We cannot fetch your current Location right now. Please use manual search. Thanks.";
-			clean();
-		}
+			}).error(function() { x.innerHTML = "Sorry, we are unable to track your current location right now. Please use 'Search a Location' feature."; });
+		
   
    
    
