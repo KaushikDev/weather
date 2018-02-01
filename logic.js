@@ -106,7 +106,7 @@ lati='';
 longi='';
 }
 function cleanSlate(){
-document.getElementById("displayIcon").src="";
+document.getElementById("displayIcon").src="spot_weather.jpg";
 document.getElementById("displayTime").innerHTML ="";
 document.getElementById("displayCity").innerHTML="";
 document.getElementById("displayCountry").innerHTML="";
