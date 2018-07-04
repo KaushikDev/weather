@@ -18,7 +18,7 @@
   <author href="https://kaushikdev.github.io/portfolio" email="piyush.kaushik02@gmail.com">
       Piyush Kaushik
   </author>
-   <icon src="ldpi.png" platform="android" qualifier="ldpi" />
+<!--   <icon src="ldpi.png" platform="android" qualifier="ldpi" /> -->
 <platform name="android">
 	<icon density="hdpi" src="res/icon/android/mipmap-hdpi/ic_launcher.png" />
 	<icon density="ldpi" src="res/icon/android/mipmap-ldpi/ic_launcher.png" />
