@@ -73,12 +73,12 @@ var latitude;
 			document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
 			
 		});
-		}).error(function() { x.innerHTML = "Oops, we couldn't find this place. Please try with a valid 'CITY' name. Thanks." //});
+		}).error(function() { x.innerHTML = "Oops, we couldn't find this place. Please try with a valid 'CITY' name. Thanks." });
 	 	 
    });
    
   
- }); 
+
   
 function init(){
 document.getElementById("searchManual").style.visibility="hidden";
