@@ -37,7 +37,7 @@ var latitude;
 									document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed     : '+data.current.wind_mph+" mph / "+data.current.wind_kph+" kph" ;
 									document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
 								});
-					});
+					//});
    
     
 			}).error(function() { x.innerHTML = "Sorry, we are unable to track your current location right now. Please use 'Search a Location' feature." });
