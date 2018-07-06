@@ -37,7 +37,7 @@ var latitude;
 									document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed     : '+data.current.wind_mph+" mph / "+data.current.wind_kph+" kph" ;
 									document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
 								});
-					//});
+					});
    
     
 			}).error(function() { x.innerHTML = "Sorry, we are unable to track your current location right now. Please use 'Search a Location' feature." });
@@ -72,18 +72,18 @@ var latitude;
 			document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed     : '+data.current.wind_mph+" mph / "+data.current.wind_kph+" kph" ;
 			document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
 			
-		});
+		
 		}).error(function() { x.innerHTML = "Oops, we couldn't find this place. Please try with a valid 'CITY' name. Thanks." });
 	 	 
    });
    
-  
+ });
+   
 
   
 function init(){
 document.getElementById("searchManual").style.visibility="hidden";
 document.getElementById("clearBtn").disabled= true;
-
 }
 
 function showHide(){
@@ -98,6 +98,7 @@ clean();
 document.getElementById("searchManual").style.visibility="hidden";
 }
 }
+
 function clean(){
 document.getElementById("clearBtn").disabled= true;
 //document.getElementById("showWeather").disabled= true;
@@ -107,6 +108,7 @@ cleanSlate();
 lati='';
 longi='';
 }
+
 function cleanSlate(){
 document.getElementById("displayIcon").src="spot_weather.jpg";
 document.getElementById("displayTime").innerHTML ="";
