@@ -40,7 +40,10 @@ var latitude;
 					});
    
     
-			}).error(function() { x.innerHTML = "Sorry, we are unable to track your current location right now. Please use 'Search a Location' feature." });
+			}).error(function() { 
+				x.innerHTML = "Sorry, we are unable to track your current location right now. Please use 'Search a Location' feature.";
+				alert("Sorry, we are unable to track your current location right now. Please use 'Search a Location' feature."");
+			});
 		
   
    
