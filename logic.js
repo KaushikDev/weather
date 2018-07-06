@@ -76,7 +76,10 @@ var latitude;
 			document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
 			
 		
-		}).error(function() { x.innerHTML = "Oops, we couldn't find this place. Please try with a valid 'CITY' name. Thanks." });
+		}).fail(function() { 
+			x.innerHTML = "Oops, we couldn't find this place. Please try with a valid 'CITY' name. Thanks.";
+		
+		});
 	 	 
    });
    
