@@ -14,7 +14,7 @@ var latitude;
 	document.getElementById("clearBtn").disabled= false;
 	cleanSlate();
 		
-			$.getJSONP(geoAPI, function(data){
+			$.getJSON(geoAPI, function(data){
 			longitude = data.lon;
 			longi = longitude.toFixed(6);
 			latitude = data.lat;
@@ -60,7 +60,7 @@ var latitude;
     
 		var apiByPlaceName="https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+searchedLoc;
     
-		$.getJSONP(apiByPlaceName, function(data){
+		$.getJSON(apiByPlaceName, function(data){
 			document.getElementById("displayIcon").src = "http:"+data.current.condition.icon;
 			document.getElementById("displayTime").innerHTML = 'Current Time   : '+data.location.localtime;
 			document.getElementById("displayCity").innerHTML = 'City           : '+data.location.name;
