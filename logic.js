@@ -26,7 +26,7 @@ var latitude;
 						var apiByLatLong = "https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+placeName;
 						
 								$.getJSON(apiByLatLong, function(data){
-									document.getElementById("displayIcon").src = "http:"+data.current.condition.icon;
+									document.getElementById("displayIcon").src = "https:"+data.current.condition.icon;
 									document.getElementById("displayTime").innerHTML = 'Current Time   : '+data.location.localtime;
 									document.getElementById("displayCity").innerHTML = 'City           : '+data.location.name;
 									document.getElementById("displayCountry").innerHTML = 'Country        : '+data.location.country;
