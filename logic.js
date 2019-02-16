@@ -7,7 +7,9 @@ var latitude;
 
  $("document").ready(function(){
  
- //+++++++++++'Weather by coordinates' section begins here. Workflow : Search for coordinates using a suitable api, convert coordinates into location using reverse geocode api, find weather of the required location using the weather api+++++++++    
+ //+++++++++++'Weather by coordinates' section begins here. Workflow : Search for coordinates using a suitable api, convert coordinates into location using reverse geocode api, find weather of the required location using the weather api+++++++++   
+
+ /*
    $("#useCurrent").on("click", function(){
 	x.innerHTML="";
 	var geoAPI="http://ip-api.com/json";
@@ -16,8 +18,11 @@ var latitude;
 		
 			$.getJSON(geoAPI, function(data){
 			longitude = data.lon;
+			console.log("longitude== "+longitude);
+			
 			longi = longitude.toFixed(6);
 			latitude = data.lat;
+			console.log("latitude== "+latitude);
 			lati = latitude.toFixed(6);
 			x.innerHTML = "Location identified as : "+lati+" , "+longi;
 			var geoCodeAPI = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lati+","+longi+"&key=AIzaSyCw2PTn1URdm2BPGU5daVOHDpav8KcqOOs" ;
@@ -49,6 +54,8 @@ var latitude;
    
    
    });
+   
+   */
 //+++++++++++'Weather by coordinates' section ends here...
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
