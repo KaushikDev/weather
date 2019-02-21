@@ -4,87 +4,14 @@
 <title>Weather App</title>
 
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="style.css">
     <script src="jquery-3.3.1.min.js"></script>
     <script src="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 </head>
 <body onload="init()">
-<style>
 
-body{
-background-color:#000;
-color:black;
-font-size:25px;
-font-family:TimesNewRoman;
-}
-.card{
- background-color: transparent;
- box-shadow: 0 4px 8px 0 rgba(255, 255, 255,0.2);
- transition: 0.3s;
- width: 60%;
- border-radius: 5px;
- margin: 10 auto;
- float: none;
- margin-bottom: 1px;
- text-align:center;
- font-weight:bold;
- color:white;
- font-size: 15px;
- border-color:white;
-}
-
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(255, 255, 255,0.5);
-}
-
-
-.card button {
-  border-color:white;
-  outline: 1;
-  padding: 1px;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  height:40px;
-  background-color:black;
-  
-}
-
-	
-.shareButton{
-border-color:white;background-color:transparent;font-size:15px;color:white;
-} 
-
-.marginTopBottom{
-margin-top:15px;
-margin-bottom:15px;
-}
-
-input{
-width:50%;
-font-size:15px;
-border-radius:5px;
-}
-
-
-#copy,#position{
-color:white;
-font-size:15px;
-}
-
-#heading{
-color:white;
-
-}
-
-#useManual, #clearBtn{
-border-color:white;background-color:transparent;
-color:white;
-}
-</style>
 <div class="container-fluid">
 
 	<div class="row text-center">
@@ -96,7 +23,7 @@ color:white;
 	<div class="row text-center">
 		<div class="col-xs-12">
 		<!--<button class="btn" id="useCurrent" ><i class="fa fa-map-marker" aria-hidden="true"></i> Current Location</button>-->
-			<button class="btn" id="useManual"  onclick="showHide()"><i class="fa fa-globe" aria-hidden="true"></i> Search a Location</button>
+			<button class="btn btn-default" id="useManual"  onclick="showHide()"><i class="fa fa-globe" aria-hidden="true"></i> Search a Location</button>
 
 		</div>
 	</div>
@@ -104,7 +31,7 @@ color:white;
 	<div id="searchManual" class="row text-center">
 		<div class="col-xs-12">
 			<input type="text" id="searchBox" placeholder='Enter your city here...E.g. Meerut'>
-			<button class="btn btn-default" id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
+			<button class="btn btn-info" id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
 
 		</div>
 	</div>
@@ -115,13 +42,14 @@ color:white;
 		</div>
 	</div>
 
-	<div class="row text-center marginTopBottom">
+	<div class="row text-center">
 		<div class="col-xs-12">
 			<div class="card">
-			<button class="btn">Weather Forecast</button>
+			<button class="btn btn-default">Weather Forecast</button>
 			
-				<div>
-				<img src="spot_weather.jpg" id="displayIcon" style="width:150px;height:150px;border-radius:100px;" >
+				
+				<div id="displayIcon" class="text-center">
+						<img src="spot_weather.jpg" style="width:200px;height:200px;border-radius:50%;">
 				</div>
 
 				<div id="displayTime">
@@ -160,10 +88,7 @@ color:white;
 
 	<div class="row text-center">
 		<div class="col-xs-12">
-			<button class="btn" id="clearBtn" onclick="clean()"><i class="fa fa-times" aria-hidden="true"></i> Clear Search</button>
-			<!--
-			<button class="btn" id="showWeather"><i class="fa fa-search" aria-hidden="true"></i> Show Weather</button>
-			-->
+			<button class="btn btn-info" id="clearBtn" onclick="clean()"><i class="fa fa-times" aria-hidden="true"></i> Clear Search</button>
 		</div>
 	</div>
 
