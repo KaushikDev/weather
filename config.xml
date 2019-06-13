@@ -12,7 +12,7 @@
   <platform name="android" />
   <platform name="winphone" />
   <description>
-      What's the weather like in your city?
+      A simple weather app made in JS.
   </description>
 
   <author href="https://kaushikdev.github.io/portfolio" email="piyush.kaushik02@gmail.com">
@@ -38,12 +38,12 @@
 	  
 	  
 <platform name="android">
-	<icon density="hdpi" src="res/icon/android/mipmap-hdpi/ic_launcher.png" />
-	<icon density="ldpi" src="res/icon/android/mipmap-ldpi/ic_launcher.png" />
-	<icon density="mdpi" src="res/icon/android/mipmap-mdpi/ic_launcher.png" />
-	<icon density="xhdpi" src="res/icon/android/mipmap-xhdpi/ic_launcher.png" />
-	<icon density="xxhdpi" src="res/icon/android/mipmap-xxhdpi/ic_launcher.png" />
-	<icon density="xxxhdpi" src="res/icon/android/mipmap-xxxhdpi/ic_launcher.png" />
+	<icon density="hdpi" src="res/mipmap-hdpi/ic_launcher.png" />
+	<icon density="ldpi" src="res/mipmap-ldpi/ic_launcher.png" />
+	<icon density="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />
+	<icon density="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />
+	<icon density="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />
+	<icon density="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />
 	
 </platform>
 
