@@ -1,0 +1,5 @@
+1. Auto complete city -- #1
+2. search by zip/pin code
+3. Auto weather
+4. multiple days forecast
+5. 

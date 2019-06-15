@@ -1,130 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weather App</title>
-
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WeatherApp</title>
     <script src="jquery-3.3.1.min.js"></script>
-    <script src="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">
 </head>
-<body onload="init()">
+<body>
+    
+    <div id="searchContainer">
+        <input id="searchBox" class="searchControl" type="text" placeholder="Enter City Name...">
+        <button id="searchBtn" class="searchControl">Search</button>
+    </div>
+    
+    <div id="weatherContainer">
+            
+            <div id="weatherDetails">
+            <h2 id="displayCity"></h2>
+            <h4 id="displayCountry"></h4>
+            <div id="displayTemperature"></div>
+            <div id="weatherMain">
+                <div id="displayCurrent"></div>
+                <div><img id="displayIcon"></div>
+            </div>
+            <hr>
+            <div id="weatherOther">
+                    <div id="displayTime"></div>
+                    <div id="displayHumidity"></div>
+                    <div id="displayWindSpeed"></div>
+                    <div id="displayWindDirection"></div>
+                    <div id="displayForecast"></div>
+            </div>
+            
+        </div>
+    </div>
 
-<div class="container-fluid">
-
-	<div class="row text-center">
-		<div class="col-xs-12">
-			<h3 id="heading">Weather App</h3>
-		</div>
-	</div>
-
-	<div class="row text-center">
-		<div class="col-xs-12">
-		<!--<button class="btn" id="useCurrent" ><i class="fa fa-map-marker" aria-hidden="true"></i> Current Location</button>-->
-			<button class="btn btn-default" id="useManual"  onclick="showHide()"><i class="fa fa-globe" aria-hidden="true"></i> Search a Location</button>
-
-		</div>
-	</div>
-
-	<div id="searchManual" class="row text-center">
-		<div class="col-xs-12">
-			<input type="text" id="searchBox" placeholder='Enter your city here...E.g. Meerut'>
-			<button class="btn btn-info" id="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
-
-		</div>
-	</div>
-
-	<div class="row text-center">
-		<div class="col-xs-12">
-			<p id="position"></p>
-		</div>
-	</div>
-
-	<div class="row text-center">
-		<div class="col-xs-12">
-			<div class="card">
-			<button class="btn btn-default">Weather Forecast</button>
-			
-				
-				<div id="displayIcon" class="text-center">
-						<img src="spot_weather.jpg" style="width:200px;height:200px;border-radius:50%;">
-				</div>
-
-				<div id="displayTime">
-				</div>
-
-				<div id="displayCity">
-				</div>
-
-				<div id="displayCountry">
-				</div>
-
-				<div id="displayTemperature">
-				</div>
-
-				<div id="displayCurrent">
-				</div>
-
-				<div id="displayForecast">
-				</div>
-
-				<div id="displayHumidity">
-				</div>
-
-				<div id="displayWindSpeed">
-				</div>
-
-				<div id="displayWindDirection">
-				</div>
-				
-				
-				
-			</div>
-		</div>
-	</div>
-
-
-	<div class="row text-center">
-		<div class="col-xs-12">
-			<button class="btn btn-info" id="clearBtn" onclick="clean()"><i class="fa fa-times" aria-hidden="true"></i> Clear Search</button>
-		</div>
-	</div>
-
-  
-    <div class="row text-center">
-		<div style="margin: 10px 0;">
-			<a id="fb" class="btn btn-default shareButton" href="https://www.facebook.com/sharer/sharer.php?u=https://KaushikDev.github.io/weatherApp" target="_blank" onClick="soundHitSocialIcon.play()">
-						<i class="fa fa-facebook"></i>
-			</a>
-			<a id="wa" class="btn btn-default shareButton" href="whatsapp://send?text=https://KaushikDev.github.io/weatherApp" onClick="soundHitSocialIcon.play()">
-						<i class="fa fa-whatsapp"></i>
-			</a>
-			<a id="tw" class="btn btn-default shareButton" href="https://twitter.com/home?status=https://KaushikDev.github.io/weatherApp" target="_blank" onClick="soundHitSocialIcon.play()">
-						<i class="fa fa-twitter" ></i>
-			</a>
-			<a id="li" class="btn btn-default shareButton" href="
-		https://www.linkedin.com/shareArticle?url=https://KaushikDev.github.io/weatherApp&title=weatherApp" target="_blank" onClick="soundHitSocialIcon.play()">
-						<i class="fa fa-linkedin" ></i>
-			</a>
-			<a id="ma" class="btn btn-default shareButton" href="mailto:?subject=weatherApp.&amp;body=https://KaushikDev.github.io/weatherApp" target="_blank" onClick="soundHitSocialIcon.play()">
-						<i class="fa fa-envelope-o" ></i>
-			</a>
-		</div>
-	</div>
-	
-	<div class="row text-center">
-		<div class="col-xs-12">
-			<a id="copy" href="https://kaushikdev.github.io/portfolio/" target="_blank"><i class="fa fa-copyright" aria-hidden="true"></i>KaushikCodeArts 2018</a>
-		</div>
-	</div>
-	
-	
-</div>
-<script src="logic.js" type="text/javascript">
-	
-</script>
+    <script src="logic.js"></script>
 </body>
-
 </html>
