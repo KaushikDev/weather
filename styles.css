@@ -1,0 +1,56 @@
+body, html{
+    height: 100%;   
+}
+
+body{
+    color: white;
+    background-image: url('images/default.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+.card{
+    background-color: rgba(0, 0, 0, 0.25);
+    padding:10px;
+    box-shadow: 5px 5px 5px black;
+    width: 70%;
+    border-radius: 5px;
+    margin: 0 auto;
+    /* visibility: hidden; */
+}
+
+
+
+
+#searchContainer{
+    margin: 10px 10px 10px 10px;
+    /* text-align: center; */
+}
+
+.searchControl{
+    box-shadow: 5px 5px 5px black;
+}
+
+
+#displayTemperature{
+    font-size: 30px;
+    margin: 10px;
+    }
+
+#displayCurrent{
+    font-size: 20px;
+}    
+  
+#displayForecast{
+    margin-top: 10px;
+    text-shadow: none;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: white;
+   
+}
+
+

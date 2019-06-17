@@ -24,16 +24,18 @@ var weatherContainerWidth = weatherContainer.clientWidth;
     
 		$.getJSON(apiByPlaceName, function(data){
 			document.getElementById("displayIcon").src = "https:"+data.current.condition.icon;
-			document.getElementById("displayTime").innerHTML = 'Current Time : '+data.location.localtime;
+			document.getElementById("displayTime").innerHTML = 'Time : '+data.location.localtime;
 			document.getElementById("displayCity").innerHTML = data.location.name;
 			document.getElementById("displayCountry").innerHTML = data.location.country;
 			document.getElementById("displayTemperature").innerHTML = data.current.temp_c+'&#8451;';
 			document.getElementById("displayCurrent").innerHTML = data.current.condition.text;
-			document.getElementById("displayForecast").innerHTML = 'Forecast : '+data.forecast.forecastday[0].day.condition.text;
 			document.getElementById("displayHumidity").innerHTML = 'Humidity : '+data.current.humidity+"%";
 			document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed : '+data.current.wind_kph+" kph" ;
 			document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
+			// document.getElementById("displayForecast").innerHTML = 'Forecast : '+data.forecast.forecastday[0].day.condition.text;
+			document.getElementById("displayForecast").innerHTML = '<strong>Forecast</strong> : '+data.forecast.forecastday[0].day.condition.text+'<img src="https:'+data.forecast.forecastday[0].day.condition.icon+'">';
 			
+			// console.log('Forecast : '+data.forecast.forecastday[0].day.condition.text+'<img src="https:'+data.forecast.forecastday[0].day.condition.icon+'">');
 			setWeatherBackground(data.current.condition.text);
 			setSearchContainerPosition();
 			setWeatherContainerPosition();
@@ -49,8 +51,9 @@ var weatherContainerWidth = weatherContainer.clientWidth;
 
 function setWeatherContainerPosition(){
 	weatherContainer.style.visibility = "visible";
-	weatherContainer.style.left = `calc(50% - ${weatherContainerWidth/2}px)`;
-	weatherContainer.style.top = `calc(50% - ${weatherContainerHeight/1.3}px)`;
+	
+	
+
 }
 
 function setSearchContainerPosition(){
