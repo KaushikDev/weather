@@ -17,13 +17,25 @@ body{
     background-color: rgba(0, 0, 0, 0.25);
     padding:10px;
     box-shadow: 5px 5px 5px black;
-    width: 70%;
+    width: 90%;
     border-radius: 5px;
     margin: 0 auto;
     /* visibility: hidden; */
 }
 
-
+.card-mini{
+    /* margin-top: 20px; */
+    position: relative;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding:10px;
+    box-shadow: 5px 5px 5px black;
+    /* width: 25%; */
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    /* visibility: hidden; */
+}
 
 
 #searchContainer{
@@ -45,7 +57,7 @@ body{
     font-size: 20px;
 }    
   
-#displayForecast{
+#displayForecastDay0 {
     margin-top: 10px;
     text-shadow: none;
     background-color: rgba(0, 0, 0, 0.25);
@@ -53,4 +65,17 @@ body{
    
 }
 
+#displayForecastDays{
+/* display: inline-block; */
+font-size: 10px;
+}
+#displayForecastDay1, #displayForecastDay2, #displayForecastDay3{
+    width: 49%;
+    display: inline-block;
+}
 
+
+#displayForecastDays img{
+    height: 30px;
+    width: 30px;
+}

@@ -9,6 +9,23 @@ var weatherContainerHeight = weatherContainer.clientHeight;
 var weatherContainerWidth = weatherContainer.clientWidth;
 
 
+var displayIcon = document.getElementById("displayIcon");
+var displayTime = document.getElementById("displayTime");
+var displayCity = document.getElementById("displayCity");
+var displayCountry = document.getElementById("displayCountry");
+var displayTemperature = document.getElementById("displayTemperature");
+var displayCurrent = document.getElementById("displayCurrent");
+var displayHumidity = document.getElementById("displayHumidity");
+var displayWindSpeed = document.getElementById("displayWindSpeed");
+var displayWindDirection = document.getElementById("displayWindDirection");
+var displayForecastDay0 = document.getElementById("displayForecastDay0");
+var displayForecastDay1 = document.getElementById("displayForecastDay1");
+var displayForecastDay2 = document.getElementById("displayForecastDay2");
+var displayForecastDay3 = document.getElementById("displayForecastDay3");
+
+var day1 = document.getElementById("day1");
+
+
  $("document").ready(function(){
  
  //+++++++++++'Weather by searched location' section begins here. Workflow : Search for the required location using search box, find weather of the required location using the weather api+++++++++  
@@ -20,22 +37,32 @@ var weatherContainerWidth = weatherContainer.clientWidth;
 		
 	
     
-		apiByPlaceName="https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+searchedLoc;
+		apiByPlaceName="https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+searchedLoc+"&days=4";
     
 		$.getJSON(apiByPlaceName, function(data){
-			document.getElementById("displayIcon").src = "https:"+data.current.condition.icon;
-			document.getElementById("displayTime").innerHTML = 'Time : '+data.location.localtime;
-			document.getElementById("displayCity").innerHTML = data.location.name;
-			document.getElementById("displayCountry").innerHTML = data.location.country;
-			document.getElementById("displayTemperature").innerHTML = data.current.temp_c+'&#8451;';
-			document.getElementById("displayCurrent").innerHTML = data.current.condition.text;
-			document.getElementById("displayHumidity").innerHTML = 'Humidity : '+data.current.humidity+"%";
-			document.getElementById("displayWindSpeed").innerHTML = 'Wind Speed : '+data.current.wind_kph+" kph" ;
-			document.getElementById("displayWindDirection").innerHTML = 'Wind Direction : '+data.current.wind_dir;
-			// document.getElementById("displayForecast").innerHTML = 'Forecast : '+data.forecast.forecastday[0].day.condition.text;
-			document.getElementById("displayForecast").innerHTML = '<strong>Forecast</strong> : '+data.forecast.forecastday[0].day.condition.text+'<img src="https:'+data.forecast.forecastday[0].day.condition.icon+'">';
+			displayIcon.src = "https:"+data.current.condition.icon;
+			displayTime.innerHTML = 'Time : '+data.location.localtime;
+			displayCity.innerHTML = data.location.name;
+			displayCountry.innerHTML = data.location.country;
+			displayTemperature.innerHTML = data.current.temp_c+'&#8451;';
+			displayCurrent.innerHTML = data.current.condition.text;
+			displayHumidity.innerHTML = 'Humidity : '+data.current.humidity+"%";
+			displayWindSpeed.innerHTML = 'Wind Speed : '+data.current.wind_kph+" kph" ;
+			displayWindDirection.innerHTML = 'Wind Direction : '+data.current.wind_dir;
+			displayForecastDay0.innerHTML = '<strong>Today\'s Forecast</strong> : '+data.forecast.forecastday[0].day.condition.text+'<img src="https:'+data.forecast.forecastday[0].day.condition.icon+'">';
 			
-			// console.log('Forecast : '+data.forecast.forecastday[0].day.condition.text+'<img src="https:'+data.forecast.forecastday[0].day.condition.icon+'">');
+
+			
+			displayForecastDay1.innerHTML = '<div>'+data.forecast.forecastday[1].date+'</div><img src="https:'+data.forecast.forecastday[1].day.condition.icon+'"><div class="row"><div class="col-xs-4" style="color:aqua">'+Math.floor(data.forecast.forecastday[1].day.mintemp_c)+'&#8451;'+'</div><div class="col-xs-4"  style="font-size:13px">'+Math.floor(data.forecast.forecastday[1].day.avgtemp_c)+'&#8451;'+'</div><div class="col-xs-4" style="color:red">'+Math.floor(data.forecast.forecastday[1].day.maxtemp_c)+'&#8451;'+'</div></div>';
+
+
+
+			displayForecastDay2.innerHTML = '<div>'+data.forecast.forecastday[2].date+'</div><img src="https:'+data.forecast.forecastday[2].day.condition.icon+'"><div class="row"><div class="col-xs-4" style="color:aqua">'+Math.floor(data.forecast.forecastday[2].day.mintemp_c)+'&#8451;'+'</div><div class="col-xs-4"  style="font-size:13px">'+Math.floor(data.forecast.forecastday[2].day.avgtemp_c)+'&#8451;'+'</div><div class="col-xs-4" style="color:red">'+Math.floor(data.forecast.forecastday[2].day.maxtemp_c)+'&#8451;'+'</div></div>';
+			
+			
+			
+			
+			
 			setWeatherBackground(data.current.condition.text);
 			setSearchContainerPosition();
 			setWeatherContainerPosition();
