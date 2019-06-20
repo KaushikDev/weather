@@ -24,23 +24,26 @@ body{
 }
 
 .card-mini{
-    /* margin-top: 20px; */
+   
     position: relative;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.25);
     padding:10px;
-    box-shadow: 5px 5px 5px black;
-    /* width: 25%; */
+    /* box-shadow: 5px 5px 5px black; */
+    border-color:white;
+    border-style: solid;
+    border-width: 1px;
+   
     border-radius: 5px;
     margin: 0 auto;
     text-align: center;
-    /* visibility: hidden; */
+  
 }
 
 
 #searchContainer{
     margin: 10px 10px 10px 10px;
-    /* text-align: center; */
+    
 }
 
 .searchControl{
@@ -62,16 +65,16 @@ body{
     text-shadow: none;
     background-color: rgba(0, 0, 0, 0.25);
     color: white;
-   
 }
 
 #displayForecastDays{
-/* display: inline-block; */
 font-size: 10px;
 }
-#displayForecastDay1, #displayForecastDay2, #displayForecastDay3{
+
+#displayForecastDay1, #displayForecastDay2{
     width: 49%;
     display: inline-block;
+    border-color:white;
 }
 
 

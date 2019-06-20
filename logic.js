@@ -27,16 +27,13 @@ var day1 = document.getElementById("day1");
 
 
  $("document").ready(function(){
- 
- //+++++++++++'Weather by searched location' section begins here. Workflow : Search for the required location using search box, find weather of the required location using the weather api+++++++++  
+	
+	
+
+//+++++++++++'Weather by searched location' section begins here. Workflow : Search for the required location using search box, find weather of the required location using the weather api+++++++++  
    $("#searchBtn").on("click", function(){
 
-	
 		searchedLoc = document.getElementById("searchBox").value;
-		console.log(searchedLoc);
-		
-	
-    
 		apiByPlaceName="https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+searchedLoc+"&days=4";
     
 		$.getJSON(apiByPlaceName, function(data){
@@ -67,7 +64,7 @@ var day1 = document.getElementById("day1");
 			setSearchContainerPosition();
 			setWeatherContainerPosition();
 		}).fail(function() { 
-			alert("Oops, we couldn't find this place. Please try with a valid 'CITY' name. Thanks.");
+			alert("Please check your data or wifi is on and connected.");
 			weatherContainer.style.visibility = "hidden";
 		});
 	 	 
