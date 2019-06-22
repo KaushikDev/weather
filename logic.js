@@ -64,7 +64,7 @@ var day1 = document.getElementById("day1");
 			setSearchContainerPosition();
 			setWeatherContainerPosition();
 		}).fail(function() { 
-			alert("Please check your data or wifi is on and connected.");
+			alert("Sorry, we didn't find that place. Check the spelling or use correct 'City' name. Also, please check your data or wifi is on and connected.");
 			weatherContainer.style.visibility = "hidden";
 		});
 	 	 
