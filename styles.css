@@ -1,6 +1,6 @@
 
 body{
-    background-image: url("https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/blue0517.jpg?itok=V3825voJ");
+    background: #20D7FF;
 }
 
 
@@ -11,7 +11,7 @@ body{
     width: 90%;
     border-radius: 5px;
     margin: 50px auto;
-    /* visibility: opaque; */
+    visibility: hidden;
   }
 
 
@@ -85,7 +85,7 @@ justify-content: space-around;
     }
     
     .low{
-    color:#2C629D;
+    color:#20D7FF;
     font-size:1.5em;
     }
     
@@ -95,6 +95,6 @@ justify-content: space-around;
     }
     
     .high{
-    color:#EC4E20;
+    color:orange;
     font-size:1.5em;
     }   
