@@ -38,7 +38,7 @@ function onPermissionGranted(position){
 	var lon = position.coords.longitude;
 	console.log(lat, lon);
 
-	apiByPlaceName="https://crossorigin.me/https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+lat+","+lon+"&days=5";
+	apiByPlaceName="https://api.weatherstack.com/v1/forecast.json?key=d00133fdf468944e924aa19bda5390e5&q="+lat+","+lon+"&days=5";
     
 	$.getJSON(apiByPlaceName, function(data){
 		displayIcon.src = "https:"+data.current.condition.icon;
@@ -89,7 +89,7 @@ $("document").ready(function(){
    $("#searchBtn").on("click", function(){
 
 		searchedLoc = document.getElementById("searchBox").value;
-		apiByPlaceName="https://crossorigin.me/https://api.apixu.com/v1/forecast.json?key=c07a6d9c3d874f3cbd451147171606&q="+searchedLoc+"&days=5";
+		apiByPlaceName="https://api.weatherstack.com/v1/forecast.json?key=d00133fdf468944e924aa19bda5390e5&q="+searchedLoc+"&days=5";
     
 		$.getJSON(apiByPlaceName, function(data){
 			displayIcon.src = "https:"+data.current.condition.icon;
