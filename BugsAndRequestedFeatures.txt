@@ -1,4 +1,4 @@
 1. Auto complete city -- #2
 2. search by zip/pin code : NOT TO BE ENTERTAINED.
-3. Auto weather -- #1
+3. Auto weather -- #1 DONE
 4. multiple days forecast : DONE

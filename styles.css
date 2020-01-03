@@ -1,100 +1,150 @@
-
-body{
-    background: #20D7FF;
+*{
+    margin:0;
+    padding:0;
 }
 
-
-.card{
-    background-color: rgba(0, 0, 0, 0.25);
-    padding:10px;
-    box-shadow: 5px 15px 15px black;
-    width: 90%;
-    border-radius: 5px;
-    margin: 50px auto;
-    visibility: hidden;
-  }
-
-
+.container-fluid{
+    background: #00E676;
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 #searchContainer{
+    margin: 20px;
+    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 #searchBox{
     flex-grow: 1;
 }
+
 .searchControl{
     box-shadow: 5px 5px 5px black;
     margin: 10px;
+    padding: 5px;
     border-radius: 2px;
     border: none;
-    height: 2em;
+    font-size: 1em;
 }
 
-
-#displayTemperature{
-    font-size: 2em;
-    margin: 10px;
-    }
-
-#displayCurrent{
-    font-size: 1.5em;
-}    
-  
-
-#displayForecastDays{
-font-size: 1em;
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
-}
-
-.card-mini{
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 1px;
-    width: 40%;
+#weather-card{
+    visibility: hidden;
+    width: 50%;
+    background-color: rgba(0,0,0,0.25);
+    padding:10px;
+    box-shadow: 7px 7px 15px #000;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-}
+    justify-content: center;
+  }
 
-#displayForecastDays img{
-    height: 75px;
-    width: 75px;
-}
-
-.insideMiniCard{
+  #weather-primary-details{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    margin: 10px;
-    color: #6A7178;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #weather-primary-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .weather-line-height{
+      margin: 5px 0 5px 0;
+      color: #fff;
+      text-shadow:  1px 1px 2px #000;
+  }
+
+  #weather-primary-img{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #displayIcon{
+      height: inherit;
+      border: 5px solid rgba(0,0,0,0.25);
+      border-radius: 10px;
+box-shadow: 2px 2px 5px #000;
+
+  }
+
+  hr{
+    margin: 20px 0 20px 0 ;
+    border-color: rgba(0,0,0,0.25);
+  }
+
+
+  #weather-secondary-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  
+
+@media screen and (min-width: 300px) and (max-width:728px){
+
+    #searchContainer{
+        margin: 20px;
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 
-    label{
-        width: 100%;
-        color: #fff;
-        background: rgba(0,0,0,0.75);
-        text-align: center;
+    .searchControl{
+        box-shadow: 5px 5px 5px black;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 2px;
+        border: none;
+        font-size: 0.85em;
     }
+           
+    #weather-card{
+        visibility: hidden;
+        width: 80%;
+        background-color: rgba(0,0,0,0.25);
+        padding:10px;
+        box-shadow: 7px 7px 15px #000;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     
-    .low{
-    color:#20D7FF;
-    font-size:1.5em;
-    }
+  
     
-   .average{
-    color:#fff;
-    font-size:2em;
-    }
+      .weather-line-height{
+          margin: 5px 0 5px 0;
+          color: #fff;
+          text-shadow: 2px 2px 2px #000;
+      }
     
-    .high{
-    color:orange;
-    font-size:1.5em;
-    }   
+      #weather-primary-img{
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+    
+}

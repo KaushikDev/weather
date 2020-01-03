@@ -1,67 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>WeatherApp</title>
-    <script src="jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-</head>
-<body>
+     <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
     <div class="container-fluid">
-    
-                <div id="searchContainer">
-                    <input id="searchBox" class="searchControl" type="text" placeholder="Type city here. e.g. London">
-                    <button class="searchControl" id="searchBtn">SEARCH</button>
-                    
-                </div>
+      <div id="searchContainer">
+        <input
+          id="searchBox"
+          class="searchControl"
+          type="text"
+          placeholder="Search city here. e.g. London"
+        />
+        <button class="searchControl" id="searchBtn" onclick="searchWeather()">SEARCH</button>
+      </div>
 
-                <div id="weatherContainer" class="card">
-                    <div id="weatherDetails">
-                        <h2 id="displayCity"></h2>
-                        <h4 id="displayCountry"></h4>
-                        <div id="displayTemperature"></div>
-                        <div id="weatherMain">
-                            <div id="displayCurrent"></div>
-                            <div><img id="displayIcon"></div>
-                        </div>
-                        <hr>
-                        <div id="weatherOther">
-                            <div id="displayTime"></div>
-                            <div id="displayHumidity"></div>
-                            <div id="displayWindSpeed"></div>
-                            <div id="displayWindDirection"></div>
-                            <div id="displayForecastDay0"></div>
-                            <img id="displayForecastDay0ImageIcon"src="" alt="forecast-icon">
-
-                                    
-
-                            
-                        </div>
-                    </div>
-                    <div id="displayForecastDays">
-                            <div id="displayForecastDay1" class="card-mini">
-                            </div>
-                            <div id="displayForecastDay2" class="card-mini">
-                            </div>
-                            <div id="displayForecastDay3" class="card-mini">
-                            </div>
-                            <div id="displayForecastDay4" class="card-mini">
-                            </div>
-                         
-                    </div>
-
-                </div>
-               
-                     
+      <div id="weather-card">
+        <div id="weather-primary-details">
+          <div id="weather-primary-text">
+            <h3 class="weather-line-height" id="displayCity"></h3>
+            <h5 class="weather-line-height" id="displayCountry"></h5>
+            <h1 class="weather-line-height" id="displayTemperature"></h1>
+            <h2 class="weather-line-height" id="displayCurrent"></h2>
+          </div>
+          <div id="weather-primary-img">
+            <img id="displayIcon" />
+          </div>
+        </div>
+        <hr />
+        <div id="weather-secondary-details">
+          <h3 class="weather-line-height" id="displayTime"></h3>
+          <h3 class="weather-line-height" id="displayHumidity"></h3>
+          <h3 class="weather-line-height" id="displayWindSpeed"></h3>
+          <h3 class="weather-line-height" id="displayWindDirection"></h3>
+        </div>
+      </div>
     </div>
-    
-    
-
-  
 
     <script src="logic.js"></script>
-</body>
+  </body>
 </html>
