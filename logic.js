@@ -28,7 +28,7 @@ function onPermissionGranted(position) {
   let lon = position.coords.longitude;
   
   url =
-    "http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
+    "https://cors-anywhere.herokuapp.com/http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
     lat +
     "," +
     lon;
@@ -59,7 +59,7 @@ function onPermissionDenied() {
 const searchWeather = () =>{
 		searchedLoc = document.querySelector("#searchBox").value;
 		url =
-		  "http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
+		  "https://cors-anywhere.herokuapp.com/http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
 		  searchedLoc;
 	
 		  fetch(url)
