@@ -9,6 +9,10 @@
     font-family: "Nunito", sans-serif;
 }
 
+body{
+  background: #87cefa;
+}
+
 .container{
     height:100vh;
     width: 100vw;
