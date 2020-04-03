@@ -1,0 +1,203 @@
+.clear__day{
+    background: url('./assets/images/desktop/Clear_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.clear__night{
+    background: url('./assets/images/desktop/Clear_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.haze__day{
+    background: url('./assets/images/desktop/Hazey_Day.png') no-repeat fixed center;
+    background-size: cover; 
+}
+
+.haze__night{
+    background: url('./assets/images/desktop/Hazey_Night.png') no-repeat fixed center;
+    background-size: cover; 
+}
+
+.foggy__day{
+    background: url('./assets/images/desktop/Foggy_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.foggy__night{
+    background: url('./assets/images/desktop/Foggy_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.misty__day{
+    background: url('./assets/images/desktop/Misty_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.misty__night{
+    background: url('./assets/images/desktop/Misty_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.cloudy__day{
+    background: url('./assets/images/desktop/Cloudy_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.cloudy__night{
+    background: url('./assets/images/desktop/Cloudy_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.partly-cloudy__day{
+    background: url('./assets/images/desktop/PartlyCloudy_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.partly-cloudy__night{
+    background: url('./assets/images/desktop/PartlyCloudy_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.light-rain__day{
+    background: url('./assets/images/desktop/LightRain_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.light-rain__night{
+    background: url('./assets/images/desktop/LightRain_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.heavy-rain__day{
+    background: url('./assets/images/desktop/HeavyRain_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.heavy-rain__night{
+    background: url('./assets/images/desktop/HeavyRain_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.light-snow__day{
+    background: url('./assets/images/desktop/LightSnow_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.light-snow__night{
+    background: url('./assets/images/desktop/LightSnow_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+
+.heavy-snow__day{
+    background: url('./assets/images/desktop/HeavySnow_Day.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+.heavy-snow__night{
+    background: url('./assets/images/desktop/HeavySnow_Night.png') no-repeat fixed center;
+    background-size: cover;
+}
+
+@media screen and (min-width: 300px) and (max-width:728px){
+    .clear__day{
+        background: url('./assets/images/mobile/Clear_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .clear__night{
+        background: url('./assets/images/mobile/Clear_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .haze__day{
+        background: url('./assets/images/mobile/Hazey_Day.png') no-repeat fixed center;
+        background-size: cover; 
+    }
+    
+    .haze__night{
+        background: url('./assets/images/mobile/Hazey_Night.png') no-repeat fixed center;
+        background-size: cover; 
+    }
+    
+    .foggy__day{
+        background: url('./assets/images/mobile/Foggy_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .foggy__night{
+        background: url('./assets/images/mobile/Foggy_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .misty__day{
+        background: url('./assets/images/mobile/Misty_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .misty__night{
+        background: url('./assets/images/mobile/Misty_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .cloudy__day{
+        background: url('./assets/images/mobile/Cloudy_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .cloudy__night{
+        background: url('./assets/images/mobile/Cloudy_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .partly-cloudy__day{
+        background: url('./assets/images/mobile/PartlyCloudy_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .partly-cloudy__night{
+        background: url('./assets/images/mobile/PartlyCloudy_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .light-rain__day{
+        background: url('./assets/images/mobile/LightRain_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .light-rain__night{
+        background: url('./assets/images/mobile/LightRain_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .heavy-rain__day{
+        background: url('./assets/images/mobile/HeavyRain_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .heavy-rain__night{
+        background: url('./assets/images/mobile/HeavyRain_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .light-snow__day{
+        background: url('./assets/images/mobile/LightSnow_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .light-snow__night{
+        background: url('./assets/images/mobile/LightSnow_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    
+    .heavy-snow__day{
+        background: url('./assets/images/mobile/HeavySnow_Day.png') no-repeat fixed center;
+        background-size: cover;
+    }
+    
+    .heavy-snow__night{
+        background: url('./assets/images/mobile/HeavySnow_Night.png') no-repeat fixed center;
+        background-size: cover;
+    }
+}

@@ -1,7 +1,8 @@
 let searchedLoc;
 let url;
+let isItDay;
 
-const mainContainer = document.querySelector(".container-fluid");
+const mainContainer = document.querySelector(".container");
 const weatherCard = document.querySelector("#weather-card");
 
 const displayIcon = document.querySelector("#displayIcon");
@@ -26,7 +27,7 @@ if (navigator.geolocation) {
 function onPermissionGranted(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  
+
   url =
     "https://cors-anywhere.herokuapp.com/http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
     lat +
@@ -34,17 +35,16 @@ function onPermissionGranted(position) {
     lon;
 
   fetch(url)
-    .then(response => response.json())
-    .then(data => {
-       setData(data);
+    .then((response) => response.json())
+    .then((data) => {
+      setData(data);
     })
-    .catch(error => {
+    .catch((error) => {
       alert(
         "Sorry, we couldn't forecast your weather right now. Please, check back after some time."
       );
       setWeatherContainerPosition("hidden");
     });
-
 }
 
 function onPermissionDenied() {
@@ -54,34 +54,32 @@ function onPermissionDenied() {
   setWeatherContainerPosition("hidden");
 }
 
+const searchWeather = () => {
+  searchedLoc = document.querySelector("#searchBox").value;
+  url =
+    "https://cors-anywhere.herokuapp.com/http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
+    searchedLoc;
 
-
-const searchWeather = () =>{
-		searchedLoc = document.querySelector("#searchBox").value;
-		url =
-		  "https://cors-anywhere.herokuapp.com/http://api.weatherstack.com/current?access_key=d00133fdf468944e924aa19bda5390e5&query=" +
-		  searchedLoc;
-	
-		  fetch(url)
-		  .then(response => response.json())
-		  .then(data => {
-		
-			setData(data);
-		  })
-		  .catch(error => {
-			alert(
-			  "Sorry, we didn't find that place. Check the spelling or use correct 'City' name. Also, please check your data or wifi is on and connected."+error
-			);
-			setWeatherContainerPosition("hidden");
-		  });
-}
-  
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      setData(data);
+    })
+    .catch((error) => {
+      alert(
+        "Sorry, we didn't find that place. Check the spelling or use correct 'City' name. Also, please check your data or wifi is on and connected." +
+          error
+      );
+      setWeatherContainerPosition("hidden");
+    });
+};
 
 const setWeatherContainerPosition = (value) => {
   weatherCard.style.visibility = value;
-}
+};
 
-const setData =  (data) => {
+const setData = (data) => {
+  isItDay = data.current.is_day.toLowerCase();
   displayIcon.src = data.current.weather_icons[0];
   displayTime.innerHTML = "<strong>Time</strong> : " + data.location.localtime;
   displayCity.innerHTML = data.location.name;
@@ -95,30 +93,68 @@ const setData =  (data) => {
   displayWindDirection.innerHTML =
     "<strong>Wind Direction : " + data.current.wind_dir;
 
-  setWeatherBackground(data.current.weather_descriptions[0]);
+  setWeatherBackground(data.current.weather_descriptions[0], isItDay);
   setWeatherContainerPosition("visible");
-}
+};
 
-
-const setWeatherBackground = (weatherCondition) => {
+const setWeatherBackground = (weatherCondition, isDay) => {
+  mainContainer.className = "container";
   switch (weatherCondition) {
     case "Sunny":
-      mainContainer.style.background = "#FF9100";
+      if (isDay === "yes") {
+        mainContainer.classList.add("clear__day");
+      } else {
+        mainContainer.classList.add("clear__night");
+      }
+
       break;
     case "Clear":
-      mainContainer.style.background = "#90CAF9";
+      if (isDay === "yes") {
+        mainContainer.classList.add("clear__day");
+      } else {
+        mainContainer.classList.add("clear__night");
+      }
+
       break;
     case "Partly cloudy":
-      mainContainer.style.background = "#FFFF00";
+      if (isDay === "yes") {
+        mainContainer.classList.add("partly-cloudy__day");
+      } else {
+        mainContainer.classList.add("partly-cloudy__night");
+      }
+
       break;
     case "Cloudy":
-      mainContainer.style.background = "#FFF9C4";
+      if (isDay === "yes") {
+        mainContainer.classList.add("cloudy__day");
+      } else {
+        mainContainer.classList.add("cloudy__night");
+      }
+
       break;
     case "Overcast":
-      mainContainer.style.background = "#FFFDE7";
+      if (isDay === "yes") {
+        mainContainer.classList.add("haze__day");
+      } else {
+        mainContainer.classList.add("haze__night");
+      }
+
       break;
     case "Mist":
-      mainContainer.style.background = "#69F0AE";
+      if (isDay === "yes") {
+        mainContainer.classList.add("misty__day");
+      } else {
+        mainContainer.classList.add("misty__night");
+      }
+
+      break;
+    case "Haze":
+      if (isDay === "yes") {
+        mainContainer.classList.add("haze__day");
+      } else {
+        mainContainer.classList.add("haze__night");
+      }
+
       break;
     case "Patchy rain possible":
     case "Patchy freezing drizzle possible":
@@ -128,47 +164,88 @@ const setWeatherBackground = (weatherCondition) => {
     case "Heavy freezing drizzle":
     case "Patchy light rain":
     case "Light rain":
+    case "Light Rain":
     case "Moderate rain at times":
     case "Moderate rain":
     case "Patchy light rain with thunder":
     case "Moderate or heavy rain with thunder":
-      mainContainer.style.background = "#B0BEC5";
+      if (isDay === "yes") {
+        mainContainer.classList.add("light-rain__day");
+      } else {
+        mainContainer.classList.add("light-rain__night");
+      }
+
       break;
     case "Moderate or heavy rain shower":
     case "Heavy rain at times":
     case "Heavy rain":
     case "Torrential rain shower":
-      mainContainer.style.background = "#546E7A";
+      if (isDay === "yes") {
+        mainContainer.classList.add("heavy-rain__day");
+      } else {
+        mainContainer.classList.add("heavy-rain__night");
+      }
+
       break;
     case "Patchy light snow":
     case "Light snow":
     case "Patchy moderate snow":
     case "Moderate snow":
     case "Light snow showers":
-      mainContainer.style.background = "#9E9E9E";
+      if (isDay === "yes") {
+        mainContainer.classList.add("light-snow__day");
+      } else {
+        mainContainer.classList.add("light-snow__night");
+      }
+
       break;
     case "Patchy heavy snow":
     case "Heavy snow":
-      mainContainer.style.background = "#BDBDBD";
+      if (isDay === "yes") {
+        mainContainer.classList.add("heavy-snow__day");
+      } else {
+        mainContainer.classList.add("heavy-snow__night");
+      }
+
       break;
     case "Ice pellets":
     case "Light showers of ice pellets":
     case "Moderate or heavy showers of ice pellets":
-      mainContainer.style.background = "#E0E0E0";
+      if (isDay === "yes") {
+        mainContainer.classList.add("heavy-snow__day");
+      } else {
+        mainContainer.classList.add("heavy-snow__night");
+      }
+
       break;
     case "Patchy light rain with thunder":
     case "Moderate or heavy rain with thunder":
     case "Patchy light snow with thunder":
     case "Moderate or heavy snow with thunder":
-      mainContainer.style.background = "#EEEEEE";
+      if (isDay === "yes") {
+        mainContainer.classList.add("light-rain__day");
+      } else {
+        mainContainer.classList.add("light-rain__night");
+      }
+
       break;
     case "Fog":
     case "Freezing fog":
-      mainContainer.style.background = "#CFD8DC";
+      if (isDay === "yes") {
+        mainContainer.classList.add("foggy__day");
+      } else {
+        mainContainer.classList.add("foggy__night");
+      }
+
       break;
 
     default:
-      mainContainer.style.background = "#00E676";
+      if (isDay === "yes") {
+        mainContainer.classList.add("clear__day");
+      } else {
+        mainContainer.classList.add("clear__night");
+      }
+
       break;
   }
-}
+};
