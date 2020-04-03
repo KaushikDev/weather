@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>WeatherApp</title>
-     <link rel="stylesheet" href="style.css" />
-     <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="weather.css" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
   </head>
 
@@ -19,7 +19,9 @@
           type="text"
           placeholder="Search city here. e.g. London"
         />
-        <button class="searchControl" id="searchBtn" onclick="searchWeather()">SEARCH</button>
+        <button class="searchControl" id="searchBtn" onclick="searchWeather()">
+          SEARCH
+        </button>
       </div>
 
       <div id="weather-card">
@@ -41,14 +43,14 @@
           <h3 class="weather-line-height" id="displayWindSpeed"></h3>
           <h3 class="weather-line-height" id="displayWindDirection"></h3>
         </div>
+        <div class="footer">
+          <p>
+            &copy;
+            <a href="https://kaushikdev.github.io/portfolio">Piyush Kaushik</a>
+            2020. All rights reserved.
+          </p>
+        </div>
       </div>
-
-      <footer>
-        
-        <a href="https://kaushikdev.github.io/portfolio">Developer Portfolio</a>
-        <p>Piyush Kaushik. &copy;2020</p>
-
-      </footer>
     </div>
 
     <script src="logic.js"></script>

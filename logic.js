@@ -67,8 +67,7 @@ const searchWeather = () => {
     })
     .catch((error) => {
       alert(
-        "Sorry, we didn't find that place. Check the spelling or use correct 'City' name. Also, please check your data or wifi is on and connected." +
-          error
+        "Sorry, we didn't find that place. Check the spelling or use correct 'City' name. Also, please check your data or wifi is on and connected."
       );
       setWeatherContainerPosition("hidden");
     });
